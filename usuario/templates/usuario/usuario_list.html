@@ -1,0 +1,45 @@
+{% include 'main/base.html' %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+            <th scope="col">Registrar</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in object_list %}
+        <tr>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.cpf}}</td>
+            <td>{{usuario.data_nascimento|date:"d/m/Y"}}</td>
+            <td>{{usuario.cargo}}</td>
+            <!--
+                <td>
+                {% if usuario.ativo %}
+                Online
+                {% else%}
+                Offline
+                {% endif %}
+            </td>
+            -->
+            <td>
+                <a href="{%url 'usuario.editar' usuario.pk %}">Editar</a>
+            </td>
+            <td>
+                <a href="{%url 'usuario.excluir' usuario.pk %}">Excluir</a>
+            </td>
+            <td>
+                <a href="{%url 'usuario.register'%}">Registrar Login</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>

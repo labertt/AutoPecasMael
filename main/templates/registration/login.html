@@ -1,0 +1,15 @@
+{% include 'main/base.html' %}
+
+{% if request.user.is_authenticated %}
+
+<h2>Ação não permitida</h2>
+<hr>
+<p> Houve algum problema para processar a ação desejada ou você não tem permissão para isso.</p>
+<button onclick="window.history.back();" type="button">Voltar</button>
+{% else %}
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Entrar"></input>
+    </form>
+{% endif %}

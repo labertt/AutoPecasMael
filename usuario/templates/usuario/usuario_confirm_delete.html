@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <h3>Você quer mesmo deletar o usuário "{{object}}"?</h3>
+    <input type="submit" value="Excluir Usuário"></input>
+    <button onclick="window.history.back();" class="btn btn-default" type="button">Cancelar</button>
+</form>
