@@ -18,6 +18,15 @@ class listagemUsuariosView(ListView):
     model = Usuario
     queryset = Usuario.objects.all().order_by('nome')
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        
+
+        filto_nome = self.request.GET.get('nome') or None
+        if filto_nome:
+            queryset = queryset.filter(nome__contains=filto_nome)
+        return queryset
+
 
 #Cadastro dos Usuários
 class usuarioCreateView(GroupRequiredMixin,SuccessMessageMixin,CreateView):
