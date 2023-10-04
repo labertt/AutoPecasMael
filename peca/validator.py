@@ -27,6 +27,6 @@ def validateCodBarras(value):
       
 def validatePreco(value):
     if int(value) <= 0:
-        raise ValidationError('O valor da peça não pode ser negativo')
+        raise ValidationError('O valor da peça não pode ser negativo e ZERO')
     else:
          return value
